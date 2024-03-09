@@ -11,13 +11,21 @@ public class HpBar : MonoBehaviour
     Animator animator;
     private float HP = 100f;
     public Image Bar;
+    public Image Lvl_bar;
     private int potionCount = 3; //  оличество доступных зелий в игре
+    public int Lvl = 2;
+    public float Now_exp = 200;
+    public float Max_exp = 220;
+    public float Multiply_value = 2.2f;
+    public Text Lvl_text;
+    public Text Max_exp_text;
 
     public void RestoreHealth(float amount)
     {
         HP += amount;
         HP = Mathf.Clamp(HP, 0f, 100f); // ќграничиваем здоровье в пределах от 0 до 100
         Bar.fillAmount = HP / 100f;
+        
     }
 
     void Update()
@@ -25,6 +33,17 @@ public class HpBar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             UsePotion();
+        }
+        Lvl_bar.fillAmount = Now_exp / Max_exp;
+        Lvl_text.text = "Lvl" +" " + Lvl.ToString();       
+        Max_exp_text.text = Now_exp.ToString() + " / " + Max_exp.ToString();
+        if (Now_exp >= Max_exp)
+        {
+            Lvl += 1;
+            Now_exp= 0;
+            Max_exp *= Multiply_value;
+            Convert.ToInt32(Max_exp);
+            Multiply_value += 0.4f;
         }
     }
 

@@ -103,14 +103,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X) && cooldown <= 0)
         {
-            cooldown = 1.5f;
+            cooldown = 0.5f;
             animator.SetTrigger("Throw");
             Instantiate(ThrowPrefab, transform.position, Quaternion.Euler(new Vector3(0,0, GetRotation())), null);
         }
 
         if (Input.GetKeyDown(KeyCode.C) && cooldown <= 0)
         {
-            cooldown = 2f;
+            cooldown = 0.5f;
             animator.SetTrigger("Bow");
             // Создаем экземпляр объекта BowPrefab в позиции текущего объекта (transform.position)
             // с поворотом, заданным через Quaternion.Euler с помощью GetRotation() для оси Z

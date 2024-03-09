@@ -16,15 +16,16 @@ public class InstantiateDialogue : MonoBehaviour
     public Button secondButton;
     public Button thirdButton;
 
-    bool dialogueEnded = false;
+    public bool dialogueEnded = false;
 
-    GameObject player;
+    public GameObject player;
     public TextAsset ta;
 
     [SerializeField]
     public int currentNode = 0;
     public int butClicked;
     bool textSet = false;
+
     Node[] nd;
     Dialogue dialogue;
 
@@ -34,7 +35,7 @@ public class InstantiateDialogue : MonoBehaviour
         secondButton.enabled = false;
         thirdButton.enabled = false;
         Window.SetActive(false);
-        player = GameObject.Find("Player");
+        player = GameObject.FindWithTag("Player");
         dialogue = Dialogue.Load(ta);
         nd = dialogue.nodes;
 
