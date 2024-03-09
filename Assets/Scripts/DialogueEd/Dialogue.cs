@@ -4,14 +4,14 @@ using UnityEngine;
 using System.Xml.Serialization;     //запись и чтение xml файла
 using System.IO;
 
-[XmlRoot("dialogue")]//функция библиотеки, которая юудет читать пространство имен
+[XmlRoot("dialogue")]
 public class Dialogue
 {
 
-    [XmlElement("text")]//отдельный элемент каждого элемента в классе Dialogue(пр npctext))
+    [XmlElement("text")]
     public string text;
 
-    [XmlElement("node")]//все реплики NPC
+    [XmlElement("node")]
     public Node[]  nodes;
 
     public static Dialogue Load(TextAsset _xml)
@@ -23,24 +23,24 @@ public class Dialogue
     }
 }
 
-[System.Serializable]//чтобы не было отображения в инспекторе
+[System.Serializable]
 public class Node
 {
     [XmlElement("npctext")]
     public string Npctext;
 
-    [XmlArray("answers")]//массив ответов
+    [XmlArray("answers")]
     [XmlArrayItem("answer")]
-    public Answer[] answers;//записываем сюда наши ответы
+    public Answer[] answers;
 }
 
-public class Answer//
+public class Answer
 {
     [XmlAttribute("tonode")]
-    public int nextNode;//инфа, какая реплика npc после нашей реплики
+    public int nextNode;
     [XmlElement("text")]
     public string text;
-    [XmlElement("dialend")]//отвечает за конец диалога
+    [XmlElement("dialend")]
     public string end;
 
 }

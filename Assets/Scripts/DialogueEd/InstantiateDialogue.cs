@@ -8,7 +8,7 @@ public class InstantiateDialogue : MonoBehaviour
     public GameObject Window;
 
 
-    public Text text;//переменные UI
+    public Text text;
     public Text firstAnswer;
     public Text secondAnswer;
     public Text thirdAnswer;
@@ -19,23 +19,23 @@ public class InstantiateDialogue : MonoBehaviour
     bool dialogueEnded = false;
 
     GameObject player;
-    public TextAsset ta;//xml файл
+    public TextAsset ta;
 
     [SerializeField]
     public int currentNode = 0;
-    public int butClicked;//инфа о том, какая из кнопок нажата
+    public int butClicked;
     bool textSet = false;
-    Node[] nd;//сюда записываются ответы NPC
+    Node[] nd;
     Dialogue dialogue;
 
     void Start()
-    {//получаем кнопки и делаем их неактивными
+    {
 
         secondButton.enabled = false;
         thirdButton.enabled = false;
         Window.SetActive(false);
         player = GameObject.Find("Player");
-        dialogue = Dialogue.Load(ta);//загрузка xml файла
+        dialogue = Dialogue.Load(ta);
         nd = dialogue.nodes;
 
 
@@ -51,7 +51,7 @@ public class InstantiateDialogue : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) < 1.5f && dialogueEnded == false)//проверяем дистанцию
+        if (Vector3.Distance(player.transform.position, transform.position) < 2f && dialogueEnded == false)
         {
             Window.SetActive(true);
         }
