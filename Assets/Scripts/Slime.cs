@@ -12,11 +12,13 @@ public class Slime : MonoBehaviour, IDamaged
     public Transform target;
     public HpBar hp;
     public float Exp_after_death = 20;
+    
     private void Start()
     {
         enemyRef = Resources.Load("Slime");
         target = GetComponent<Pathfinding.AIDestinationSetter>().target;
         hp = GameObject.FindWithTag("Player").GetComponent<HpBar>();
+        statue = GameObject.FindWithTag("Statue").GetComponent<NPC_Task>();
     }
 
     void Respawn()
@@ -31,14 +33,19 @@ public class Slime : MonoBehaviour, IDamaged
 
     public void Damage(int count)
     {
-        HP -= 50;
+        HP -= count;
 
         if (HP <= 0)
-        {
+        {   
+            if (statue.step == 3)
+            {
+                statue.smiles++;
+            }
             gameObject.SetActive(false);
-            statue.smiles++;
+            
             Invoke("Respawn", 10f);
             hp.Now_exp += Exp_after_death;
+            
         }
     }
 }

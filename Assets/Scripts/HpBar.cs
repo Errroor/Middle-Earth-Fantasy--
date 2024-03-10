@@ -9,22 +9,23 @@ using Unity.VisualScripting;
 public class HpBar : MonoBehaviour
 {
     Animator animator;
-    private float HP = 100f;
+    public float HP = 100f;
+    public float Max_hp = 100f;
     public Image Bar;
     public Image Lvl_bar;
     private int potionCount = 3; //  оличество доступных зелий в игре
     public int Lvl = 2;
     public float Now_exp = 200;
     public float Max_exp = 220;
-    public float Multiply_value = 2.2f;
+    public float Multiply_value = 2.6f;
     public Text Lvl_text;
     public Text Max_exp_text;
-
+    public int damage = 30;
     public void RestoreHealth(float amount)
     {
         HP += amount;
-        HP = Mathf.Clamp(HP, 0f, 100f); // ќграничиваем здоровье в пределах от 0 до 100
-        Bar.fillAmount = HP / 100f;
+        HP = Mathf.Clamp(HP, 0f, Max_hp); // ќграничиваем здоровье в пределах от 0 до 100
+        Bar.fillAmount = HP / Max_hp;
         
     }
 
@@ -36,14 +37,16 @@ public class HpBar : MonoBehaviour
         }
         Lvl_bar.fillAmount = Now_exp / Max_exp;
         Lvl_text.text = "Lvl" +" " + Lvl.ToString();       
-        Max_exp_text.text = Now_exp.ToString() + " / " + Max_exp.ToString();
+        Max_exp_text.text = Now_exp.ToString() + " / " + Math.Round(Max_exp).ToString();
         if (Now_exp >= Max_exp)
         {
             Lvl += 1;
             Now_exp= 0;
             Max_exp *= Multiply_value;
-            Convert.ToInt32(Max_exp);
-            Multiply_value += 0.4f;
+            Max_hp += 30f;
+            damage += 20;
+            HP = Max_hp;
+            Bar.fillAmount = HP / Max_hp;
         }
     }
 
@@ -64,7 +67,7 @@ public class HpBar : MonoBehaviour
             animator = GetComponent<Animator>();
             animator.SetTrigger("Damage");
             HP -= 30;
-            Bar.fillAmount = HP / 100f;
+            Bar.fillAmount = HP / Max_hp;
 
             if (HP <= 0)
             {

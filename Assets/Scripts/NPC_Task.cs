@@ -22,11 +22,12 @@ public class NPC_Task : MonoBehaviour
          // Скрыть окно при старте
     }
 
-    void Update()
+    private void Update()
     {
-        if (smiles > 2 && step==3)
+        if (step==3 && smiles>=3 && !status)
         {
             status = true;
+
         }
     }
 
@@ -61,6 +62,7 @@ public class NPC_Task : MonoBehaviour
                 Complete_Quest();
                 statue.SetTrigger("stop");
                 step = 2;
+                status = false;
             }
             else if (step == 1 && !status)
             {
@@ -71,7 +73,7 @@ public class NPC_Task : MonoBehaviour
                 Quest.text = "Мерзкая слизь поселилась на могилах бравых войнов. Прошу, убей чудовищ.";
                 statue.SetTrigger("stop");
                 Set_Quest("Геноцид слизней", "Найдите 3 слизней в руинах храма и убейте их.");
-                status = false;
+                
                 step = 3;
             }
             else if (step == 3 && !status)
@@ -84,14 +86,14 @@ public class NPC_Task : MonoBehaviour
                 Complete_Quest();
                 statue.SetTrigger("stop");
                 step = 4;
-                status = true;
+                status = false;
             }
             else if (step == 4)
             {
                 Quest.text = "О великий герой, отправляйся на юг, к новому кладбищу. Зло, затаившееся там, не дает мне покоя";
                 Set_Quest("Древнее зло или новый друг", "Выяснить, что происходит на кладбище.");
                 statue.SetTrigger("stop");
-                status = false;
+               
                 step = 5;
             }
             else if (step == 5 && !status)
@@ -104,6 +106,7 @@ public class NPC_Task : MonoBehaviour
                 Quest.text = "О, ты справился с этим испытанием! Благодарим тебя за помощь в очищении храма.";
                 Complete_Quest();
                 statue.SetTrigger("stop");
+                status = false;
             }
 
         }

@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\HpBar.cs" />
     <Compile Include="Assets\Персонаж\IsometricElfFreeVer\scripts\ArrowManager.cs" />
-    <Compile Include="Assets\Tutorial.cs" />
     <Compile Include="Assets\Scripts\IDamaged.cs" />
     <Compile Include="Assets\Персонаж\IsometricElfFreeVer\scripts\PlayerManager.cs" />
     <Compile Include="Assets\Slimme\StateRandom.cs" />
@@ -75,6 +74,8 @@
     <Compile Include="Assets\NPC\Inventory\UseOfItems.cs" />
     <Compile Include="Assets\NPC\Inventory\ItemInfo.cs" />
     <Compile Include="Assets\NPC\Inventory\PickUpObject.cs" />
+    <Compile Include="Assets\Scripts\Tutorial_activator.cs" />
+    <Compile Include="Assets\Scripts\Tutorial.cs" />
     <Compile Include="Assets\Окружение\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
     <Compile Include="Assets\NPC\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\DialogueEd\Dialogue.cs" />
@@ -87,7 +88,6 @@
     <Compile Include="Assets\Окружение\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
     <Compile Include="Assets\Scripts\NPC_Task.cs" />
     <Compile Include="Assets\Scripts\QuestObjects\ObjectQuest1.cs" />
-    <Compile Include="Assets\Tutorial_activator.cs" />
     <Compile Include="Assets\NPC\Inventory\Inventory.cs" />
   </ItemGroup>
   <ItemGroup>
